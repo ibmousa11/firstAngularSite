@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-header">{{title}}</div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-1">Filter by:</div>
+      <div class="col-md-2">
+        <input type="text" [(ngModel)]="listFilter" />
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            <button class="btn btn-primary" (click)="toggleImage()">
+              Toggle Image
+            </button>
+          </th>
+          <th>Service</th>
+          <th>Cost</th>
+          <th>Wait Time</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td>
+            <img
+              *ngIf="buttonClicked"
+              [src]="product.imageURL"
+              [width]="imageWidth"
+              [height]="imageHeight"
+            />
+          </td>
+          <td style>
+            <div>
+              {{ product.serviceName | uppercase }}
+            </div>
+          </td>
+
+          <td>
+            <div>
+              {{ product.cost | currency }}
+            </div>
+          </td>
+
+          <td>
+            <div>
+              {{ product.time + " min" }}
+            </div>
+          </td>
+
+          <td>
+            <div>
+              <pm-star [rating]="product.rating" (ratingClicked)='onRatingClicked($event)'></pm-star>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
