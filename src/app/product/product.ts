@@ -1,8 +1,10 @@
-export interface IProduct{
-  serviceName: string;
-  cost: number;
-  time: number;
-  description: string;
-  imageURL: string;
-  rating: number;
+export interface IProduct {
+  productId: number,
+  productName: string,
+  productCode: string,
+  releaseDate: string,
+  description: string,
+  price: number,
+  starRating: number,
+  imageUrl:string
 }

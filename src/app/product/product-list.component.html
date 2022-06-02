@@ -29,32 +29,34 @@
           <td>
             <img
               *ngIf="buttonClicked"
-              [src]="product.imageURL"
+              [src]="product.imageUrl"
               [width]="imageWidth"
               [height]="imageHeight"
             />
           </td>
           <td style>
             <div>
-              {{ product.serviceName | uppercase }}
+              <a [routerLink]="['/products', product.productId]">
+                {{ product.productName | uppercase }}
+              </a>
             </div>
           </td>
 
           <td>
             <div>
-              {{ product.cost | currency }}
+              {{ product.price | currency }}
             </div>
           </td>
 
           <td>
             <div>
-              {{ product.time + " min" }}
+              {{ product.productCode + " min" }}
             </div>
           </td>
 
           <td>
             <div>
-              <pm-star [rating]="product.rating" (ratingClicked)='onRatingClicked($event)'></pm-star>
+              <pm-star [rating]="product.starRating" (ratingClicked)='onRatingClicked($event)'></pm-star>
             </div>
           </td>
         </tr>
